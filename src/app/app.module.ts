@@ -7,17 +7,19 @@ import {AgGridModule} from 'ag-grid-ng2/main';
 import { Typeahead } from 'ng2-typeahead';
 
 import { AppComponent } from './app.component';
+import {TypeAheadEditorComponent} from "./TypeAheadEditorComponent";
 
 @NgModule({
   declarations: [
     AppComponent,
-    Typeahead
+    Typeahead,
+    TypeAheadEditorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([TypeAheadEditorComponent])
   ],
   providers: [],
   bootstrap: [AppComponent]

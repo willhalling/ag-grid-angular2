@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import {GridOptions} from 'ag-grid/main';
+import {TypeAheadEditorComponent} from "./TypeAheadEditorComponent";
 
 
 @Component({
@@ -27,7 +28,8 @@ export class AppComponent {
         field: "value",
         editable:true,
         colId: "square",
-        width: 125
+        width: 125,
+        cellEditorFramework: TypeAheadEditorComponent
       },
       {
         headerName: "Cube",
@@ -68,31 +70,4 @@ export class AppComponent {
 
     return rowData;
   }
-
-
-  fruitName: string;
-  fruits: any[] = [
-    {
-      id: 1,
-      name: "Apple",
-      searchText: "apple"
-    },
-    {
-      id: 2,
-      name: "Orange",
-      searchText: "orange"
-    },
-    {
-      id: 3,
-      name: "Banana",
-      searchText: "banana"
-    }
-  ];
-
-  selectedFruit: any = this.fruits[0];
-
-  public fruitSelected(fruit) {
-    this.fruitName = fruit ? fruit.name : 'none';
-  }
-
 }
