@@ -1,10 +1,11 @@
-import {Component} from "@angular/core";
+import {Component, ViewContainerRef, ViewChild} from "@angular/core";
 import {AgEditorComponent} from "ag-grid-ng2/main";
 
 @Component({
     selector: 'square-cell',
     template: `
       <typeahead
+        #typeahead
         [(ngModel)]="selectedFruit"
         [list]="fruits"
         [searchProperty]="'searchText'" [displayProperty]="'name'"
@@ -14,6 +15,9 @@ import {AgEditorComponent} from "ag-grid-ng2/main";
       </typeahead>`
 })
 export class TypeAheadEditorComponent implements AgEditorComponent {
+
+    @ViewChild('typeahead', {read: ViewContainerRef}) public container;
+
     private params: any;
     fruitName: string;
     fruits: any[] = [
@@ -46,6 +50,10 @@ export class TypeAheadEditorComponent implements AgEditorComponent {
 
     isPopup() : boolean {
         return true;
+    }
+
+    ngAfterViewInit() {
+        this.container.element.nativeElement.querySelector('.typeahead-input').focus();
     }
 
     public fruitSelected(fruit) {
