@@ -34,7 +34,7 @@ export class TypeAheadEditorComponent implements AgEditorComponent {
         }
     ];
 
-    selectedFruit: any = this.fruits[0];
+    //selectedFruit: any = this.fruits[0];
 
     agInit(params: any): void {
         this.params = params;
